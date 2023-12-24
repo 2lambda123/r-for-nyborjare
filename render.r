@@ -25,4 +25,3 @@ str <- whisker.render(read_file(file), data = list(
 rmd <- gsub(".template", "-handout.Rmd", file)
 write_file(str, rmd)
 pagify(rmd)
-
