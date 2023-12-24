@@ -15,12 +15,10 @@ write_file <- function(str, file) {
    close(con)
 }
 
-file <- "part-1.template"
+file <- "rin10minutes.template"
 
-# Create handout
+# Create presentations
 str <- whisker.render(read_file(file), data = list(
-   handout = T,
-   pm = F,
    framework = "io2012",
    hitheme = "github"
 ))
@@ -28,13 +26,3 @@ rmd <- gsub(".template", "-handout.Rmd", file)
 write_file(str, rmd)
 pagify(rmd)
 
-# Create presentation
-str <- whisker.render(read_file(file), data = list(
-   handout = F,
-   pm = F
-   framework = "io2012",
-   hitheme = "github"
-))
-rmd <- gsub(".template", "-presentation.Rmd", file)
-write_file(str, rmd)
-pagify(rmd)
